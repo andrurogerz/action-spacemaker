@@ -7,7 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  linux:
+  linux-default:
+    name: Test Linux (default behavior)
     runs-on: ubuntu-latest
     steps:
       - uses: andrurogerz/action-spacemaker@main
+
+  linux-print-package-sizes:
+    name: Test Linux w/package sizes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: andrurogerz/action-spacemaker@main
+        with:
+          print-package-sizes: true

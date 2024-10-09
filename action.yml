@@ -1,6 +1,12 @@
 name: "Space Maker"
 description: "A composite GitHub action to free-up disk space by removing large packages and files"
 
+inputs:
+  print-package-sizes:
+    description: Print out the list of installed packages sorted by size
+    required: false
+    default: false
+
 runs:
   using: composite
   steps:
@@ -14,6 +20,11 @@ runs:
     - name: Print start disk usage
       shell: bash
       run: df --human-readable --all
+
+    - name: Print package sizes
+      if: inputs.print-package-sizes == 'true'
+      shell: bash
+      run: dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort --numeric-sort --reverse
 
     - name: Purge packages
       shell: bash
