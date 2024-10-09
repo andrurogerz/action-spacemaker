@@ -1,0 +1,64 @@
+name: "Space Maker"
+description: "A composite GitHub action to free-up disk space by removing large packages and files"
+
+runs:
+  using: composite
+  steps:
+    - name: Check for Linux OS
+      if: runner.os != 'Linux'
+      shell: bash
+      run: |
+        echo "${{ runner.os }} is not suppored"
+        exit 1
+
+    - name: Print start disk usage
+      shell: bash
+      run: df --human-readable --all
+
+    - name: Purge packages
+      shell: bash
+      run: |
+        sudo apt purge -qq \
+          aspnetcore-* \
+          azure-* \
+          containerd.io \
+          containernetworking-plugins \
+          docker-ce* \
+          dotnet-* \
+          firefox \
+          gfortran-* \
+          google-chrome-stable \
+          google-cloud-cli* \
+          kubectl \
+          linux-azure-* \
+          linux-modules-*-azure \
+          microsoft-edge-stable \
+          mono-* \
+          monodoc-* \
+          msbuild \
+          mysql-* \
+          podman \
+          postgresql-* \
+          powershell \
+          r-base-core \
+          vim-runtime
+
+    - name: Purge packages
+      shell: bash
+      run: sudo apt autoremove -qq
+
+    - name: Remove PowerShell Support Files
+      shell: bash
+      run: sudo rm -rf /usr/local/share/powershell
+
+    - name: Remove Docker Support Files
+      shell: bash
+      run: sudo rm -rf /var/lib/docker
+
+    - name: Remove Swift Supprt Files
+      shell: bash
+      run: sudo rm -rf /usr/share/swift
+
+    - name: Print final disk usage
+      shell: bash
+      run: df --human-readable --all
