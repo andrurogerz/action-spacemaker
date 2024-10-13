@@ -29,7 +29,7 @@ runs:
     - name: Purge packages
       shell: bash
       run: |
-        sudo apt purge -qq \
+        sudo dpg --purge -qq \
           aspnetcore-* \
           azure-* \
           containerd.io \
@@ -54,7 +54,7 @@ runs:
           r-base-core \
           vim-runtime
 
-    - name: Purge packages
+    - name: Autoremove packages
       shell: bash
       run: sudo apt autoremove -qq
 
