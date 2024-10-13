@@ -34,24 +34,25 @@ runs:
           azure-* \
           containerd.io \
           containernetworking-plugins \
+          linux-headers-* \
           docker-ce* \
           dotnet-* \
           firefox \
           gfortran-* \
           google-chrome-stable \
-          google-cloud-cli* \
           kubectl \
           linux-azure-* \
           linux-modules-*-azure \
           microsoft-edge-stable \
+          mecab-ipadic \
           mono-* \
           monodoc-* \
-          msbuild \
           mysql-* \
           podman \
           postgresql-* \
-          powershell \
+          powershell-* \
           r-base-core \
+          snapd \
           vim-runtime
 
     - name: Purge packages
