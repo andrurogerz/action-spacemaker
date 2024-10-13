@@ -58,7 +58,6 @@ runs:
           postgresql-* \
           powershell-* \
           r-base-core \
-          snapd \
           vim-runtime
 
     - name: Purge packages (22.04)
@@ -109,6 +108,7 @@ runs:
           linux-azure-* \
           linux-modules-*-azure \
           microsoft-edge-stable \
+          mongodb-* \
           mono-* \
           monodoc-* \
           msbuild \
