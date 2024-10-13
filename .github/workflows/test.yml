@@ -7,15 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  linux-default:
-    name: Test Linux (default behavior)
-    runs-on: ubuntu-latest
+  linux-ubuntu-24.04:
+    name: Test Linux (ubuntu-24.04)
+    runs-on: ubuntu-24.04
     steps:
       - uses: andrurogerz/action-spacemaker@main
+        with:
+          print-package-sizes: true
 
-  linux-print-package-sizes:
-    name: Test Linux w/package sizes
-    runs-on: ubuntu-latest
+  linux-ubuntu-22.04:
+    name: Test Linux (ubuntu-22.04)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: andrurogerz/action-spacemaker@main
+        with:
+          print-package-sizes: true
+
+  linux-ubuntu-20.04:
+    name: Test Linux (ubuntu-20.04)
+    runs-on: ubuntu-20.04
     steps:
       - uses: andrurogerz/action-spacemaker@main
         with:
